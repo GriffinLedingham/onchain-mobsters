@@ -67,7 +67,7 @@ describe("Soldier", function () {
     // iterate 10 times
     for (let i = 0; i < 10; i++) {
       await soldier.connect(testUserAddr).doMission(nextId);
-      await soldier.connect(testUserAddr).speedUpMissionTimer(nextId, { value: ethers.utils.parseEther("1") } as any);
+      await soldier.connect(testUserAddr).speedUpMissionTimer(nextId, { value: ethers.utils.parseEther(".001") } as any);
     }
 
     // Expect the newly minted soldier to be owned by the test user

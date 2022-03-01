@@ -104,9 +104,9 @@ contract Soldier is ERC721 {
         // require that the soldier is owned by the caller
         require(ownerOf(_soldier) == msg.sender, "Soldier must be owned by caller");
 
-        require(msg.value == 1 ether, "You must pay 1 ether to speed up the mission timer");
+        require(msg.value == .001 ether, "You must pay .001 ether to speed up the mission timer");
         // ensure the msg sender has enough ether
-        require(msg.sender.balance >= 1 ether, "You must have at least 1 ether to speed up the mission timer");
+        require(msg.sender.balance >= .001 ether, "You must have at least .001 ether to speed up the mission timer");
 
         // charge the caller a token value here
         sendEther(payable(this));
