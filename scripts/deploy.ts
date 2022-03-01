@@ -13,13 +13,30 @@ async function main() {
   // manually to make sure everything is compiled
   // await hre.run('compile');
 
-  // We get the contract to deploy
   const Soldier = await ethers.getContractFactory("Soldier");
-    const soldier = await Soldier.deploy();
+  const soldier = await Soldier.deploy();
 
-    await soldier.deployed();
+  await soldier.deployed();
 
   console.log("Soldier deployed to:", soldier.address);
+
+  const Item = await ethers.getContractFactory("Item");
+  const item = await Item.deploy();
+
+  await item.deployed();
+
+  console.log("Item deployed to:", item.address);
+
+  const Boss = await ethers.getContractFactory("Boss");
+  const boss = await Boss.deploy(soldier.address, item.address);
+
+  await boss.deployed();
+
+  // Set the boss/soldier contract addresses in the item contract for internal calls
+  await item.setBossContractAddress(boss.address);
+  await item.setSoldierContractAddress(soldier.address);
+
+  console.log("Boss deployed to:", boss.address);
 }
 
 // We recommend this pattern to be able to use async/await everywhere
