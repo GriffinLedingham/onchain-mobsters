@@ -29,7 +29,7 @@ contract Soldier is ERC721 {
     event Created(address indexed owner, uint soldier);
 
     /* eslint-disable no-empty-blocks */
-    constructor() ERC721("Soldier", "MOB") {
+    constructor() ERC721("Soldier", "SLDR") {
 
     }
 
